@@ -17,7 +17,7 @@ class StockTest {
     @DisplayName("주식 객체가 정상적으로 생성되어야 한다")
     @Test
     void stockCreate() {
-        Stock stock = new Stock();
+        Stock stock = new Stock(STOCK_CODE);
         assertNotNull(stock);
     }
 
@@ -61,7 +61,7 @@ class StockTest {
 
     @DisplayName("주식 객체는 빈 문자열 코드로 초기화 될 수 없다")
     @Test
-    void initStockWithNegativePrice() {
+    void initStockWithEmptyStockCodePrice() {
         try {
             Stock stock = new Stock(STOCK_CODE_EMPTY, STOCK_PRICE);
             fail();
