@@ -1,9 +1,19 @@
 package driver;
 
-public class KiwerDriver implements DriverInterface{
-    @Override
-    public void login(String id, String password) {
+import java.util.HashMap;
 
+public class KiwerDriver implements DriverInterface{
+    private final HashMap<String, String> userLoginInfo = new HashMap<>();
+
+    public KiwerDriver() {
+        initUserLoginInfo();
+    }
+
+    @Override
+    public void login(String userId, String password) {
+        if (userLoginSucess(userId, password)) {
+            System.out.print(userId + "님 로그인 성공");
+        }
     }
 
     @Override
@@ -19,5 +29,13 @@ public class KiwerDriver implements DriverInterface{
     @Override
     public int getPrice(String stockCode) {
         return 0;
+    }
+
+    private void initUserLoginInfo() {
+        userLoginInfo.put("USER", "PASSWORD");
+    }
+
+    private boolean userLoginSucess(String userId, String password) {
+        return userLoginInfo.containsKey(userId) && userLoginInfo.get(userId).equals(password);
     }
 }
