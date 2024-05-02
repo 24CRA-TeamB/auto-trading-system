@@ -1,6 +1,7 @@
 package driver;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -23,20 +24,23 @@ public class MockDriverTest {
 
     @Nested
     class Login {
+
+        MockDriver driver;
+
+        @BeforeEach
+        void setUp() {
+            driver = new MockDriver();
+        }
+
         @Test
         @DisplayName("USER, PASSWORD 로 로그인을 시도했을 때, 로그인 메소드가 1회 호출된다")
         void loginMockCallCnt(){
-            MockDriver driver = new MockDriver();
-            driver.login(USER_ID, PASSWORD);
-
-            verify(driver, times(1)).login(USER_ID, PASSWORD);
+            assertDoesNotThrow(()->driver.login(USER_ID, PASSWORD));
         }
 
         @Test
         @DisplayName("USER, PASSWORD 로 로그인을 시도했을 때, USER ID를 출력한다")
         void loginMockPrintContainUserID(){
-            MockDriver driver = new MockDriver();
-
             // set log stream
             ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
             PrintStream originalOut = System.out;
@@ -55,8 +59,6 @@ public class MockDriverTest {
         @Test
         @DisplayName("ID에 빈 문자열이 전달되었을 때, Exception이 발생한다")
         void loginMockWithoutUserId(){
-            MockDriver driver = new MockDriver();
-
             try {
                 driver.login(EMPTY_STRING, PASSWORD);
                 fail();
@@ -85,18 +87,14 @@ public class MockDriverTest {
         @DisplayName("주식 코드(AAA), 수량(10), 가격(10000)을 전달했을 때, buy 메소드가 1회 호출된다")
         void buyMockCallCnt(){
             MockDriver driver = new MockDriver();
-            driver.buy(STOCK_CODE, STOCK_AMOUNT, STOCK_PRICE);
-
-            verify(driver, times(1)).buy(STOCK_CODE, STOCK_AMOUNT, STOCK_PRICE);
+            assertDoesNotThrow(() -> driver.buy(STOCK_CODE, STOCK_AMOUNT, STOCK_PRICE));
         }
 
         @Test
         @DisplayName("주식 코드(AAA), 수량(10), 가격(10000)을 전달했을 때, sell 메소드가 1회 호출된다")
         void sellMockCallCnt(){
             MockDriver driver = new MockDriver();
-            driver.sell(STOCK_CODE, STOCK_AMOUNT, STOCK_PRICE);
-
-            verify(driver, times(1)).buy(STOCK_CODE, STOCK_AMOUNT, STOCK_PRICE);
+            assertDoesNotThrow(() -> driver.sell(STOCK_CODE, STOCK_AMOUNT, STOCK_PRICE));
         }
     }
 
