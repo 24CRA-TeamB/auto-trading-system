@@ -58,8 +58,8 @@ class KiwerDriverTest {
             driver.buy(STOCK_CODE, AMOUNT, PRICE);
 
             // then
-            String expected = STOCK_CODE + "를 " + PRICE + "가격에 매수하였음\r\n";
-            assertEquals(expected, outputStream.toString());
+            String expected = STOCK_CODE + "를 " + PRICE + "가격에 매수하였음";
+            assertEquals(expected, outputStream.toString().trim());
         }
 
         @Test
@@ -71,8 +71,8 @@ class KiwerDriverTest {
             driver.sell(STOCK_CODE, AMOUNT, PRICE);
 
             // then
-            String expected = STOCK_CODE + "를 " + PRICE + "가격에 매도하였음\r\n";
-            assertEquals(expected, outputStream.toString());
+            String expected = STOCK_CODE + "를 " + PRICE + "가격에 매도하였음";
+            assertEquals(expected, outputStream.toString().trim());
         }
     }
 

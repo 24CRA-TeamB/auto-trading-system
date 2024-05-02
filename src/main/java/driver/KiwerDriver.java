@@ -40,7 +40,7 @@ public class KiwerDriver implements DriverInterface{
     public int getPrice(String stockCode) {
         stockCodeValidationCheck(stockCode);
 
-        return kiwerAPI.currentPrice(stockCode);
+        return getKiwerAPI().currentPrice(stockCode);
     }
 
     private void stockCodeValidationCheck(String stockCode) {
@@ -48,7 +48,7 @@ public class KiwerDriver implements DriverInterface{
             throw new IllegalArgumentException("Stock Code 비어있음");
     }
 
-    private static boolean isStockCodeEmpty(String stockCode) {
+    private boolean isStockCodeEmpty(String stockCode) {
         return stockCode == null || stockCode.equals("");
     }
 
