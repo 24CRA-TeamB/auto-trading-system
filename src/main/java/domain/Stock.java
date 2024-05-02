@@ -17,15 +17,15 @@ public class Stock {
         return this.stockCode;
     }
 
+    public int getStockPrice() {
+        return stockPrice;
+    }
+  
     private void setStockCode(String stockCode) {
         if (stockCode == null || stockCode.isEmpty()) {
             throw new IllegalArgumentException("Stock Code가 비어있음.");
         }
         this.stockCode = stockCode;
-    }
-
-    public int getStockPrice() {
-        return stockPrice;
     }
 
     private void setStockPrice(int stockPrice) {
