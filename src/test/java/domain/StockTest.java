@@ -37,6 +37,7 @@ class StockTest {
         assertEquals(STOCK_CODE, stockCode);
     }
 
+
     @DisplayName("주식 객체는 0으로 초기화 될 수 없다")
     @Test
     void initStockWithZeroPrice() {
@@ -61,7 +62,7 @@ class StockTest {
 
     @DisplayName("주식 객체는 빈 문자열 코드로 초기화 될 수 없다")
     @Test
-    void initStockWithNegativePrice() {
+    void initStockWithEmptyStringCode() {
         try {
             Stock stock = new Stock(STOCK_CODE_EMPTY, STOCK_PRICE);
             fail();
