@@ -1,5 +1,5 @@
 package driver;
 
-public class MockDriver {
+public class MockDriver implements DriverInterface {
 
 }

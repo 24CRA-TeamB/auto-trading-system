@@ -1,5 +1,5 @@
 package driver;
 
-public class NemoDriver {
+public class NemoDriver implements DriverInterface {
 
 }
