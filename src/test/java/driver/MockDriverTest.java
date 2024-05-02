@@ -1,10 +1,6 @@
 package driver;
 
-import org.assertj.core.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
-import org.mockito.Mockito;
+import org.junit.jupiter.api.*;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
@@ -23,6 +19,21 @@ public class MockDriverTest {
 
     @Nested
     class Login {
+        ByteArrayOutputStream outputStream;
+        PrintStream originalOut;
+
+        @BeforeEach
+        void setUp() {
+            outputStream = new ByteArrayOutputStream();
+            originalOut = System.out;
+            System.setOut(new PrintStream(outputStream));
+        }
+
+        @AfterEach
+        void tearDown() {
+            System.setOut(originalOut);
+        }
+
         @Test
         @DisplayName("USER, PASSWORD 로 로그인을 시도했을 때, 로그인 메소드가 1회 호출된다")
         void loginMockCallCnt(){
@@ -35,20 +46,14 @@ public class MockDriverTest {
         @Test
         @DisplayName("USER, PASSWORD 로 로그인을 시도했을 때, USER ID를 출력한다")
         void loginMockPrintContainUserID(){
+            // given
             MockDriver driver = new MockDriver();
 
-            // set log stream
-            ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-            PrintStream originalOut = System.out;
-            System.setOut(new PrintStream(outputStream));
-
-            // act
+            // when
             driver.login(USER_ID, PASSWORD);
 
-            // set log stream to origin
+            // then
             String actual = outputStream.toString();
-            System.setOut(originalOut);
-
             assertThat(actual).contains(USER_ID);
         }
 
