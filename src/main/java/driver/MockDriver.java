@@ -4,7 +4,13 @@ public class MockDriver implements DriverInterface {
 
     @Override
     public void login(String id, String password) {
+        if(id==null || id.equals(""))
+            throw new IllegalArgumentException("ID가 비어있음");
 
+        if(password==null || password.equals(""))
+            throw new IllegalArgumentException("Password가 비어있음");
+
+        System.out.println(id);
     }
 
     @Override
