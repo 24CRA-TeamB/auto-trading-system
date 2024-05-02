@@ -1,5 +1,6 @@
 package domain;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -62,7 +63,7 @@ class StockTest {
 
     @DisplayName("주식 객체는 빈 문자열 코드로 초기화 될 수 없다")
     @Test
-    void initStockWithEmptyStockCodePrice() {
+    void initStockWithEmptyStockCode() {
         try {
             Stock stock = new Stock(STOCK_CODE_EMPTY, STOCK_PRICE);
             fail();

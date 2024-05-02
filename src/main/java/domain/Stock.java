@@ -15,6 +15,10 @@ public class Stock {
         this.stockCode = stockCode;
         this.stockPrice = stockPrice;
     }
+      
+    public String getStockCode() {
+        return this.stockCode;
+    }
 
     public int getStockPrice() {
         return stockPrice;
