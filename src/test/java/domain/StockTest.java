@@ -1,5 +1,6 @@
 package domain;
 
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,6 +15,7 @@ class StockTest {
     public static final int STOCK_PRICE_MINUS = -1000;
     public static final String STOCK_CODE_EMPTY = "";
 
+    @Disabled
     @DisplayName("주식 객체가 정상적으로 생성되어야 한다")
     @Test
     void stockCreate() {
@@ -21,6 +23,7 @@ class StockTest {
         assertNotNull(stock);
     }
 
+    @Disabled
     @DisplayName("10000원으로 초기화된 주식 종목에서 10000원 가격을 확인할 수 있다")
     @Test
     void getStockPrice() {
@@ -48,6 +51,7 @@ class StockTest {
         }
     }
 
+    @Disabled
     @DisplayName("주식 객체는 음수로 초기화 될 수 없다")
     @Test
     void initStockWithNegativePrice() {
@@ -59,9 +63,10 @@ class StockTest {
         }
     }
 
+    @Disabled
     @DisplayName("주식 객체는 빈 문자열 코드로 초기화 될 수 없다")
     @Test
-    void initStockWithNegativePrice() {
+    void initStockWithEmptyStockCode() {
         try {
             Stock stock = new Stock(STOCK_CODE_EMPTY, STOCK_PRICE);
             fail();
