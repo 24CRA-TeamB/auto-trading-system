@@ -1,20 +1,21 @@
 package driver;
 
 import com.sun.istack.internal.NotNull;
+import domain.Stock;
 
 import java.util.HashMap;
 
 public class MockDriver implements DriverInterface {
     public static final String STOCK_CODE_AAA = "AAA";
     public static final int INITIAL_PRICE_AAA = 10000;
-    private HashMap<String, Integer> stockPriceMap = new HashMap<>();
+    private HashMap<String, Stock> stockPriceMap = new HashMap<>();
 
     public MockDriver() {
         initStockPriceMap();
     }
 
     private void initStockPriceMap() {
-        stockPriceMap.put(STOCK_CODE_AAA, INITIAL_PRICE_AAA);
+        stockPriceMap.put(STOCK_CODE_AAA, new Stock(STOCK_CODE_AAA, INITIAL_PRICE_AAA));
     }
 
     @Override
@@ -37,7 +38,7 @@ public class MockDriver implements DriverInterface {
         if (stockPriceMap.containsKey(stockCode) == false) {
             return 0;
         } else {
-            return stockPriceMap.get(stockCode);
+            return stockPriceMap.get(stockCode).;
         }
     }
 }
