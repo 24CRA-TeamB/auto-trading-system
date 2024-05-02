@@ -1,5 +1,7 @@
 package driver;
 
+import com.sun.istack.internal.NotNull;
+
 import java.util.HashMap;
 
 public class MockDriver implements DriverInterface {
@@ -31,7 +33,7 @@ public class MockDriver implements DriverInterface {
     }
 
     @Override
-    public int getPrice(String stockCode) {
+    public int getPrice(@NotNull String stockCode) {
         if (stockPriceMap.containsKey(stockCode) == false) {
             return 0;
         } else {
