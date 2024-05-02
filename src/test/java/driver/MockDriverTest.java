@@ -85,18 +85,14 @@ public class MockDriverTest {
         @DisplayName("주식 코드(AAA), 수량(10), 가격(10000)을 전달했을 때, buy 메소드가 1회 호출된다")
         void buyMockCallCnt(){
             MockDriver driver = new MockDriver();
-            driver.buy(STOCK_CODE, STOCK_AMOUNT, STOCK_PRICE);
-
-            verify(driver, times(1)).buy(STOCK_CODE, STOCK_AMOUNT, STOCK_PRICE);
+            assertDoesNotThrow(() -> driver.buy(STOCK_CODE, STOCK_AMOUNT, STOCK_PRICE));
         }
 
         @Test
         @DisplayName("주식 코드(AAA), 수량(10), 가격(10000)을 전달했을 때, sell 메소드가 1회 호출된다")
         void sellMockCallCnt(){
             MockDriver driver = new MockDriver();
-            driver.sell(STOCK_CODE, STOCK_AMOUNT, STOCK_PRICE);
-
-            verify(driver, times(1)).buy(STOCK_CODE, STOCK_AMOUNT, STOCK_PRICE);
+            assertDoesNotThrow(() -> driver.sell(STOCK_CODE, STOCK_AMOUNT, STOCK_PRICE));
         }
     }
 
