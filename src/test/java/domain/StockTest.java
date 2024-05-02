@@ -37,6 +37,7 @@ class StockTest {
         assertEquals(STOCK_CODE, stockCode);
     }
 
+
     @DisplayName("주식 객체는 0으로 초기화 될 수 없다")
     @Test
     void initStockWithZeroPrice() {
