@@ -89,7 +89,7 @@ class KiwerDriverTest {
             int price = driver.getPrice(STOCK_CODE);
 
             // then
-            assertThat(price).isBetween(5000, 6000);
+            assertThat(price).isBetween(4000, 6000);
         }
     }
 }

@@ -38,7 +38,18 @@ public class KiwerDriver implements DriverInterface{
 
     @Override
     public int getPrice(String stockCode) {
-        return 0;
+        stockCodeValidationCheck(stockCode);
+
+        return kiwerAPI.currentPrice(stockCode);
+    }
+
+    private void stockCodeValidationCheck(String stockCode) {
+        if(isStockCodeEmpty(stockCode))
+            throw new IllegalArgumentException("Stock Code 비어있음");
+    }
+
+    private static boolean isStockCodeEmpty(String stockCode) {
+        return stockCode == null || stockCode.equals("");
     }
 
     private void initUserLoginInfo() {
