@@ -1,9 +1,13 @@
 package domain;
 
 public class Stock {
-    private String stockCode;
+    private final String stockCode;
     private int stockPrice;
-
+      
+    public Stock(String stockCode) {
+        this.stockCode = stockCode;
+    }
+      
     public Stock(String stockCode, int stockPrice) {
 
         checkIllegalArgument(stockCode, stockPrice);
@@ -12,6 +16,10 @@ public class Stock {
         this.stockPrice = stockPrice;
     }
 
+    public int getStockPrice() {
+        return stockPrice;
+    }
+  
     private void checkIllegalArgument(String stockCode, int stockPrice) {
         if(stockCode == null || stockCode.equals(""))
             throw new IllegalArgumentException("Stock Code가 비어있음.");
