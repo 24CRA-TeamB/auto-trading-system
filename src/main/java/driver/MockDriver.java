@@ -38,7 +38,7 @@ public class MockDriver implements DriverInterface {
         if (stockPriceMap.containsKey(stockCode) == false) {
             return 0;
         } else {
-            return stockPriceMap.get(stockCode).;
+            return stockPriceMap.get(stockCode).getPrice();
         }
     }
 }
