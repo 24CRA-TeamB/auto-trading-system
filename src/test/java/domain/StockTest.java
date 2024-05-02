@@ -18,7 +18,7 @@ class StockTest {
     @DisplayName("주식 객체가 정상적으로 생성되어야 한다")
     @Test
     void stockCreate() {
-        Stock stock = new Stock();
+        Stock stock = new Stock(STOCK_CODE);
         assertNotNull(stock);
     }
 
@@ -37,6 +37,7 @@ class StockTest {
         String stockCode = stock.getStockCode();
         assertEquals(STOCK_CODE, stockCode);
     }
+
 
     @DisplayName("주식 객체는 0으로 초기화 될 수 없다")
     @Test
