@@ -41,8 +41,9 @@ class KiwerDriverTest {
             driver.login(USER_ID, PASSWORD);
 
             // then
+            String expected = "[네모]" + USER_ID + "님 로그인 성공";
             String actual = outputStream.toString();
-            assertEquals(actual, USER_ID + "님 로그인 성공");
+            assertEquals(expected, actual);
         }
     }
 
@@ -58,7 +59,7 @@ class KiwerDriverTest {
             driver.buy(STOCK_CODE, AMOUNT, PRICE);
 
             // then
-            String expected = STOCK_CODE + "를 " + PRICE + "가격에 매수하였음";
+            String expected = "[네모]" + STOCK_CODE + "를 " + PRICE + "가격에 매수하였음";
             assertEquals(expected, outputStream.toString().trim());
         }
 
@@ -71,7 +72,7 @@ class KiwerDriverTest {
             driver.sell(STOCK_CODE, AMOUNT, PRICE);
 
             // then
-            String expected = STOCK_CODE + "를 " + PRICE + "가격에 매도하였음";
+            String expected = "[네모]" + STOCK_CODE + "를 " + PRICE + "가격에 매도하였음";
             assertEquals(expected, outputStream.toString().trim());
         }
     }
